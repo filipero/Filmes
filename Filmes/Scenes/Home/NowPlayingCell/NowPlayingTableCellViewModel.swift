@@ -8,6 +8,7 @@
 import Foundation
 
 struct NowPlayingTableCellViewModel {
+  let movieId: Int
   let movieName: String
   let movieRating: String
   let moviePosterUrl: String

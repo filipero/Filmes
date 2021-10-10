@@ -38,6 +38,6 @@ final class detailsViewController: UIViewController {
   }
 
   private func setupBinds() {
-    //Setup the binds to viewModel here
+    
   }
 }

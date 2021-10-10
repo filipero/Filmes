@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class HomeRouter: NSObject, Router{
+final class HomeRouter: NSObject, Router {
   var childRouters: [Router] = []
   private let presenter: UINavigationController
   private weak var navigationDelegate: RouterDelegate?
@@ -61,6 +61,19 @@ final class HomeRouter: NSObject, Router{
 //MARK: - HomeNavigationDelegate
 
 extension HomeRouter: HomeNavigationDelegate {
+  func goToMovieList(withGenre genre: HomeModels.Genre) {
+//    goToMovieList implementation
+  }
+  
+  func goToMovieDetails(movieId: Int) {
+    let viewModel: detailsViewModel = detailsViewModel(service: detailsWorker(),
+                                                       navigationDelegate: self,
+                                                       movieId: movieId)
+    let viewController: detailsViewController = detailsViewController(viewModel: viewModel)
+    
+    presenter.pushViewController(viewController, animated: true)
+  }
+  
   
 }
 
@@ -76,6 +89,6 @@ extension HomeRouter: WatchedNavigationDelegate {
   
 }
 
-//extension HomeRouter: ProfileNavigationDelegate {
-//
-//}
+extension HomeRouter: detailsNavigationDelegate {
+  
+}

@@ -7,7 +7,8 @@
 import Foundation
 
 protocol HomeNavigationDelegate: AnyObject {
-  
+  func goToMovieDetails(movieId: Int)
+  func goToMovieList(withGenre genre: HomeModels.Genre)
 }
 
 protocol HomeViewModelProtocol: AnyObject {
@@ -17,6 +18,9 @@ protocol HomeViewModelProtocol: AnyObject {
   var nowPlayingState: Bindable<Void> { get }
   var genreDataSource: CollectionViewDataSource<GenreCollectionCellViewModel> { get }
   var genreState: Bindable<Void> { get }
+  
+  func goToMovieDetails(movieId: Int)
+  func goToMovieList(withGenre genre: HomeModels.Genre)
 }
 
 class HomeViewModel {
@@ -54,7 +58,8 @@ extension HomeViewModel: HomeViewModelProtocol {
     service.requestPopularMovies(atPage: 1) { result in
       guard let baseUrl = HomeWorker.configuration?.images.secureBaseURL else { return }
       let popularMovies: [PopularMovieCollectionCellViewModel] = result.results.map {
-        PopularMovieCollectionCellViewModel(movieName: $0.originalTitle,
+        PopularMovieCollectionCellViewModel(movieId: $0.id,
+                                            title: $0.originalTitle,
                                             moviePosterUrl: baseUrl + "w300" + $0.backdropPath)
       }
       if !popularMovies.isEmpty {
@@ -68,7 +73,8 @@ extension HomeViewModel: HomeViewModelProtocol {
     service.requestNowPlayingMovies(atPage: 1) { result in
       guard let baseUrl = HomeWorker.configuration?.images.secureBaseURL else { return }
       let nowPlayingMovies: [NowPlayingTableCellViewModel] = result.results.map {
-        NowPlayingTableCellViewModel(movieName: $0.title,
+        NowPlayingTableCellViewModel(movieId: $0.id,
+                                     movieName: $0.title,
                                      movieRating: "\($0.voteAverage)",
                                      moviePosterUrl: baseUrl + "w300" + $0.backdropPath,
                                      releaseDate: $0.releaseDate)
@@ -91,6 +97,14 @@ extension HomeViewModel: HomeViewModelProtocol {
         self.genreState.update(with: ())
       }
     }
+  }
+  
+  public func goToMovieDetails(movieId: Int) {
+    navigationDelegate?.goToMovieDetails(movieId: movieId)
+  }
+  
+  public func goToMovieList(withGenre genre: HomeModels.Genre) {
+    navigationDelegate?.goToMovieList(withGenre: genre)
   }
 }
 

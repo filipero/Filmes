@@ -40,17 +40,45 @@ final class HomeViewController: UIViewController {
   private func setupBinds() {
     viewModel.popularMoviesState.addObservation(for: self) { _,_ in
       self.baseView.popularMoviesCollectionView.dataSource = self.viewModel.popularMoviesDataSource
+      self.baseView.popularMoviesCollectionView.delegate = self
       self.baseView.popularMoviesCollectionView.reloadData()
     }
     
     viewModel.nowPlayingState.addObservation(for: self) { _,_ in
       self.baseView.nowPlayingTableView.dataSource = self.viewModel.nowPlayingDataSource
+      self.baseView.nowPlayingTableView.delegate = self
       self.baseView.nowPlayingTableView.reloadData()
     }
     
     viewModel.genreState.addObservation(for: self) { _,_ in
       self.baseView.genreCollectionView.dataSource = self.viewModel.genreDataSource
       self.baseView.genreCollectionView.reloadData()
+    }
+  }
+}
+
+extension HomeViewController: UICollectionViewDelegate {
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    switch collectionView {
+    case self.baseView.popularMoviesCollectionView:
+      guard let selectedModel: PopularMovieCollectionCellViewModel = self.viewModel.popularMoviesDataSource.getModel(at: indexPath) else { return }
+      self.viewModel.goToMovieDetails(movieId: selectedModel.movieId)
+    case self.baseView.genreCollectionView:
+      guard let selectedModel: GenreCollectionCellViewModel = self.viewModel.genreDataSource.getModel(at: indexPath) else { return }
+      let genre = HomeModels.Genre(id: selectedModel.id,
+                                   name: selectedModel.name)
+      self.viewModel.goToMovieList(withGenre: genre)
+    default:
+      break
+    }
+  }
+}
+
+extension HomeViewController: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    if tableView == self.baseView.nowPlayingTableView {
+      guard let selectedModel: NowPlayingTableCellViewModel = self.viewModel.nowPlayingDataSource.getModel(at: indexPath) else { return }
+      self.viewModel.goToMovieDetails(movieId: selectedModel.movieId)
     }
   }
 }

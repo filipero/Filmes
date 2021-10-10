@@ -8,11 +8,12 @@
 import UIKit
 
 struct PopularMovieCollectionCellViewModel {
-  let movieName: String
+  let movieId: Int
+  let title: String
   let moviePosterUrl: String
   
   func configure(cell: PopularMovieCollectionCellView) {
-    cell.movieNameLabel.text = movieName
+    cell.movieNameLabel.text = title
     cell.backgroundImage.downloaded(from: moviePosterUrl, contentMode: .scaleToFill)
   }
 }

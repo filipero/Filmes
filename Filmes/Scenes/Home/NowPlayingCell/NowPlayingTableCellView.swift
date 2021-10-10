@@ -79,6 +79,7 @@ final class NowPlayingTableCellView: UITableViewCell {
   }
   
   private func setupComponents() {
+    selectionStyle = .none
     contentView.addSubview(mainStackView)
     
     installConstraints()
