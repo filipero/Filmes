@@ -37,15 +37,21 @@ final class HomeRouter: NSObject, Router{
                                                               navigationDelegate: self)
     let watchedViewController: WatchedViewController = WatchedViewController(viewModel: watchedViewModel)
     
+//    let profileViewModel: ProfileViewModel = ProfileViewModel(service: ProfileWorker(),
+//                                                              navigationDelegate: self)
+    let profileViewController: UIViewController = UIViewController()
+    
     let tabbarController: UITabBarController = CustomTabBar()
     
     homeViewController.tabBarItem = .homeTabBarItem
     searchViewController.tabBarItem = .searchTabBarItem
     watchedViewController.tabBarItem = .watchedTabBarItem
+    profileViewController.tabBarItem = .profileTabBarItem
     
     tabbarController.viewControllers = [homeViewController,
                                         searchViewController,
-                                        watchedViewController]
+                                        watchedViewController,
+                                        profileViewController]
     
     tabbarController.selectedViewController = homeViewController
     presenter.pushViewController(tabbarController, animated: true)
@@ -69,3 +75,7 @@ extension HomeRouter: SearchNavigationDelegate {
 extension HomeRouter: WatchedNavigationDelegate {
   
 }
+
+//extension HomeRouter: ProfileNavigationDelegate {
+//
+//}

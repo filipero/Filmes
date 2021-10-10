@@ -38,6 +38,19 @@ final class HomeViewController: UIViewController {
   }
   
   private func setupBinds() {
-    baseView.popularMoviesCollectionView.dataSource = viewModel.popularMoviesDataSource
+    viewModel.popularMoviesState.addObservation(for: self) { _,_ in
+      self.baseView.popularMoviesCollectionView.dataSource = self.viewModel.popularMoviesDataSource
+      self.baseView.popularMoviesCollectionView.reloadData()
+    }
+    
+    viewModel.nowPlayingState.addObservation(for: self) { _,_ in
+      self.baseView.nowPlayingTableView.dataSource = self.viewModel.nowPlayingDataSource
+      self.baseView.nowPlayingTableView.reloadData()
+    }
+    
+    viewModel.genreState.addObservation(for: self) { _,_ in
+      self.baseView.genreCollectionView.dataSource = self.viewModel.genreDataSource
+      self.baseView.genreCollectionView.reloadData()
+    }
   }
 }

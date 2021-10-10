@@ -12,7 +12,11 @@ protocol HomeNavigationDelegate: AnyObject {
 
 protocol HomeViewModelProtocol: AnyObject {
   var popularMoviesDataSource: CollectionViewDataSource<PopularMovieCollectionCellViewModel> { get }
-  var popularMoviesState: Bindable<Bool> { get }
+  var popularMoviesState: Bindable<Void> { get }
+  var nowPlayingDataSource: TableViewDataSource<NowPlayingTableCellViewModel> { get }
+  var nowPlayingState: Bindable<Void> { get }
+  var genreDataSource: CollectionViewDataSource<GenreCollectionCellViewModel> { get }
+  var genreState: Bindable<Void> { get }
 }
 
 class HomeViewModel {
@@ -20,30 +24,77 @@ class HomeViewModel {
   private weak var navigationDelegate: HomeNavigationDelegate?
   
   var popularMoviesDataSource: CollectionViewDataSource<PopularMovieCollectionCellViewModel> = .make(for: [])
-  var popularMoviesState: Bindable<Bool> = Bindable()
+  var popularMoviesState: Bindable<Void> = Bindable()
+  
+  var nowPlayingDataSource: TableViewDataSource<NowPlayingTableCellViewModel> = .make(for: [])
+  var nowPlayingState: Bindable<Void> = Bindable()
+  
+  var genreDataSource: CollectionViewDataSource<GenreCollectionCellViewModel> = .make(for: [])
+  var genreState: Bindable<Void> = Bindable()
   
   init(service: HomeWorkerProtocol = HomeWorker(),
        navigationDelegate: HomeNavigationDelegate? = nil) {
     self.service = service
     self.navigationDelegate = navigationDelegate
+    requestConfiguration()
   }
 }
 
 //MARK: - HomeViewModelProtocol
 
 extension HomeViewModel: HomeViewModelProtocol {
-  public func requestMovieList() {
+  public func requestConfiguration() {
+    service.requestConfiguration {
+      self.requestPopularMoviesList()
+      self.requestNowPlayingMovies()
+      self.requestGenres()
+    }
+  }
+  public func requestPopularMoviesList() {
     service.requestPopularMovies(atPage: 1) { result in
-      let popularMovies = result.results.map { result in
-        PopularMovieCollectionCellViewModel(movieName: result.originalTitle, moviePosterUrl: result.posterPath)
+      guard let baseUrl = HomeWorker.configuration?.images.secureBaseURL else { return }
+      let popularMovies: [PopularMovieCollectionCellViewModel] = result.results.map {
+        PopularMovieCollectionCellViewModel(movieName: $0.originalTitle,
+                                            moviePosterUrl: baseUrl + "w300" + $0.backdropPath)
       }
-      self.popularMoviesDataSource = .make(for: popularMovies)
-      self.popularMoviesState.update(with: true)
+      if !popularMovies.isEmpty {
+        self.popularMoviesDataSource = .make(for: popularMovies)
+        self.popularMoviesState.update(with: ())
+      }
+    }
+  }
+  
+  public func requestNowPlayingMovies() {
+    service.requestNowPlayingMovies(atPage: 1) { result in
+      guard let baseUrl = HomeWorker.configuration?.images.secureBaseURL else { return }
+      let nowPlayingMovies: [NowPlayingTableCellViewModel] = result.results.map {
+        NowPlayingTableCellViewModel(movieName: $0.title,
+                                     movieRating: "\($0.voteAverage)",
+                                     moviePosterUrl: baseUrl + "w300" + $0.backdropPath,
+                                     releaseDate: $0.releaseDate)
+      }
+      if !nowPlayingMovies.isEmpty {
+        self.nowPlayingDataSource = .make(for: nowPlayingMovies)
+        self.nowPlayingState.update(with: ())
+      }
+    }
+  }
+  
+  public func requestGenres() {
+    service.requestMovieGenres {
+      let genreList: [GenreCollectionCellViewModel] = $0.genres.map {
+        GenreCollectionCellViewModel(id: $0.id,
+                                     name: $0.name)
+      }
+      if !genreList.isEmpty {
+        self.genreDataSource = .make(for: genreList)
+        self.genreState.update(with: ())
+      }
     }
   }
 }
 
-//MARK: - CollectionCellDataSource
+//MARK: - PopularMovieCollectionCellDataSource
 
 fileprivate extension CollectionViewDataSource where Model == PopularMovieCollectionCellViewModel {
   static func make(for models: [PopularMovieCollectionCellViewModel],
@@ -52,6 +103,36 @@ fileprivate extension CollectionViewDataSource where Model == PopularMovieCollec
                                     reuseIdentifier: PopularMovieCollectionCellView.identifier,
                                     cellConfigurator: { (model, cell) in
       if let cell = cell as? PopularMovieCollectionCellView {
+        model.configure(cell: cell)
+      }
+    })
+  }
+}
+
+//MARK: - GenreCollectionCellDataSource
+
+fileprivate extension CollectionViewDataSource where Model == GenreCollectionCellViewModel {
+  static func make(for models: [GenreCollectionCellViewModel],
+                   reuseIdentifier: String = GenreCollectionCellView.identifier) -> CollectionViewDataSource<Model> {
+    return CollectionViewDataSource(models: models,
+                                    reuseIdentifier: GenreCollectionCellView.identifier,
+                                    cellConfigurator: { (model, cell) in
+      if let cell = cell as? GenreCollectionCellView {
+        model.configure(cell: cell)
+      }
+    })
+  }
+}
+
+//MARK: - NowPlayingTableViewDataSource
+
+fileprivate extension TableViewDataSource where Model == NowPlayingTableCellViewModel {
+  static func make(for models: [NowPlayingTableCellViewModel],
+                   reuseIdentifier: String = NowPlayingTableCellView.identifier) -> TableViewDataSource<Model> {
+    return TableViewDataSource(models: models,
+                                    reuseIdentifier: NowPlayingTableCellView.identifier,
+                                    cellConfigurator: { (model, cell) in
+      if let cell = cell as? NowPlayingTableCellView {
         model.configure(cell: cell)
       }
     })

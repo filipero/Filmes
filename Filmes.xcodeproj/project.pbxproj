@@ -41,7 +41,14 @@
 		DB6BAC1E270FC9D700AE0F3D /* WatchedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6BAC19270FC9D700AE0F3D /* WatchedViewController.swift */; };
 		DB6BAC1F270FC9D700AE0F3D /* WatchedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6BAC1A270FC9D700AE0F3D /* WatchedView.swift */; };
 		DB6BAC20270FC9D700AE0F3D /* WatchedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6BAC1B270FC9D700AE0F3D /* WatchedViewModel.swift */; };
+		DB6E309F2712788C00F72F66 /* GenreCollectionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6E309E2712788C00F72F66 /* GenreCollectionCellView.swift */; };
+		DB6E30A12712789A00F72F66 /* GenreCollectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6E30A02712789A00F72F66 /* GenreCollectionCellViewModel.swift */; };
+		DB6E30A32712858D00F72F66 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6E30A22712858D00F72F66 /* CGFloat+Extensions.swift */; };
+		DB6E30A5271285DA00F72F66 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6E30A4271285DA00F72F66 /* UIColor+Extensions.swift */; };
 		DB94E705270FCBFE00818828 /* CustomTabBarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB94E704270FCBFE00818828 /* CustomTabBarItems.swift */; };
+		DBF9EAB62712243F00A9C1D9 /* ImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF9EAB52712243F00A9C1D9 /* ImageView+Extensions.swift */; };
+		DBF9EAB927125C7E00A9C1D9 /* NowPlayingTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF9EAB827125C7E00A9C1D9 /* NowPlayingTableCellView.swift */; };
+		DBF9EABB27125C8A00A9C1D9 /* NowPlayingTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF9EABA27125C8A00A9C1D9 /* NowPlayingTableCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,7 +107,14 @@
 		DB6BAC19270FC9D700AE0F3D /* WatchedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchedViewController.swift; sourceTree = "<group>"; };
 		DB6BAC1A270FC9D700AE0F3D /* WatchedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchedView.swift; sourceTree = "<group>"; };
 		DB6BAC1B270FC9D700AE0F3D /* WatchedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchedViewModel.swift; sourceTree = "<group>"; };
+		DB6E309E2712788C00F72F66 /* GenreCollectionCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCollectionCellView.swift; sourceTree = "<group>"; };
+		DB6E30A02712789A00F72F66 /* GenreCollectionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCollectionCellViewModel.swift; sourceTree = "<group>"; };
+		DB6E30A22712858D00F72F66 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
+		DB6E30A4271285DA00F72F66 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		DB94E704270FCBFE00818828 /* CustomTabBarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarItems.swift; sourceTree = "<group>"; };
+		DBF9EAB52712243F00A9C1D9 /* ImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+Extensions.swift"; sourceTree = "<group>"; };
+		DBF9EAB827125C7E00A9C1D9 /* NowPlayingTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingTableCellView.swift; sourceTree = "<group>"; };
+		DBF9EABA27125C8A00A9C1D9 /* NowPlayingTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingTableCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,13 +174,10 @@
 		DB6BABC3270FAC4300AE0F3D /* Filmes */ = {
 			isa = PBXGroup;
 			children = (
-				DB6BAC00270FBB4400AE0F3D /* Utils */,
-				DB6BABF4270FAE5100AE0F3D /* Scenes */,
-				DB6BABC4270FAC4300AE0F3D /* AppDelegate.swift */,
-				DB6BABC6270FAC4300AE0F3D /* SceneDelegate.swift */,
-				DB6BABCD270FAC4600AE0F3D /* Assets.xcassets */,
-				DB6BABCF270FAC4600AE0F3D /* LaunchScreen.storyboard */,
 				DB6BABD2270FAC4600AE0F3D /* Info.plist */,
+				DB6E30A7271286C600F72F66 /* Essentials */,
+				DB6BABF4270FAE5100AE0F3D /* Scenes */,
+				DB6BAC00270FBB4400AE0F3D /* Utils */,
 			);
 			path = Filmes;
 			sourceTree = "<group>";
@@ -191,9 +202,9 @@
 		DB6BABF4270FAE5100AE0F3D /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				DB6BAC16270FC9BE00AE0F3D /* Watched */,
-				DB6BAC09270FC6AB00AE0F3D /* Search */,
 				DB6BABF5270FAF5200AE0F3D /* Home */,
+				DB6BAC09270FC6AB00AE0F3D /* Search */,
+				DB6BAC16270FC9BE00AE0F3D /* Watched */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -201,6 +212,8 @@
 		DB6BABF5270FAF5200AE0F3D /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				DB6E309D2712786800F72F66 /* GenreCell */,
+				DBF9EAB727125C6400A9C1D9 /* NowPlayingCell */,
 				DB28519D27111A9200EE6A8C /* PopularMovieCell */,
 				DB6BAC07270FBE5000AE0F3D /* HomeRouter.swift */,
 				DB6BABF6270FAF6E00AE0F3D /* HomeWorker.swift */,
@@ -215,16 +228,9 @@
 		DB6BAC00270FBB4400AE0F3D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				DB6BAC01270FBB5300AE0F3D /* BaseView.swift */,
-				DB6BAC03270FBCA900AE0F3D /* Router.swift */,
-				DB6BAC05270FBDB600AE0F3D /* AppRouter.swift */,
-				DB6BAC14270FC8BB00AE0F3D /* CustomTabBar.swift */,
-				DB94E704270FCBFE00818828 /* CustomTabBarItems.swift */,
-				DB28519B27111A2900EE6A8C /* TableViewDataSource.swift */,
-				DB2851A227111C3700EE6A8C /* Constraints.swift */,
-				DB2851A42711295100EE6A8C /* CollectionViewDataSource.swift */,
-				DB2851A62711582A00EE6A8C /* Bindable.swift */,
-				DB2851A827115D7700EE6A8C /* Loadable.swift */,
+				DB6E30A92712881800F72F66 /* CustomHelpers */,
+				DB6E30A8271287E500F72F66 /* CustomUIComponents */,
+				DB6E30A62712869A00F72F66 /* Extensions */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -251,6 +257,69 @@
 				DB6BAC1B270FC9D700AE0F3D /* WatchedViewModel.swift */,
 			);
 			path = Watched;
+			sourceTree = "<group>";
+		};
+		DB6E309D2712786800F72F66 /* GenreCell */ = {
+			isa = PBXGroup;
+			children = (
+				DB6E309E2712788C00F72F66 /* GenreCollectionCellView.swift */,
+				DB6E30A02712789A00F72F66 /* GenreCollectionCellViewModel.swift */,
+			);
+			path = GenreCell;
+			sourceTree = "<group>";
+		};
+		DB6E30A62712869A00F72F66 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DB6E30A22712858D00F72F66 /* CGFloat+Extensions.swift */,
+				DBF9EAB52712243F00A9C1D9 /* ImageView+Extensions.swift */,
+				DB6E30A4271285DA00F72F66 /* UIColor+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DB6E30A7271286C600F72F66 /* Essentials */ = {
+			isa = PBXGroup;
+			children = (
+				DB6BABC4270FAC4300AE0F3D /* AppDelegate.swift */,
+				DB6BABC6270FAC4300AE0F3D /* SceneDelegate.swift */,
+				DB6BABCD270FAC4600AE0F3D /* Assets.xcassets */,
+				DB6BABCF270FAC4600AE0F3D /* LaunchScreen.storyboard */,
+			);
+			path = Essentials;
+			sourceTree = "<group>";
+		};
+		DB6E30A8271287E500F72F66 /* CustomUIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				DB6BAC01270FBB5300AE0F3D /* BaseView.swift */,
+				DB2851A227111C3700EE6A8C /* Constraints.swift */,
+				DB6BAC14270FC8BB00AE0F3D /* CustomTabBar.swift */,
+			);
+			path = CustomUIComponents;
+			sourceTree = "<group>";
+		};
+		DB6E30A92712881800F72F66 /* CustomHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				DB6BAC05270FBDB600AE0F3D /* AppRouter.swift */,
+				DB2851A62711582A00EE6A8C /* Bindable.swift */,
+				DB2851A42711295100EE6A8C /* CollectionViewDataSource.swift */,
+				DB94E704270FCBFE00818828 /* CustomTabBarItems.swift */,
+				DB2851A827115D7700EE6A8C /* Loadable.swift */,
+				DB6BAC03270FBCA900AE0F3D /* Router.swift */,
+				DB28519B27111A2900EE6A8C /* TableViewDataSource.swift */,
+			);
+			path = CustomHelpers;
+			sourceTree = "<group>";
+		};
+		DBF9EAB727125C6400A9C1D9 /* NowPlayingCell */ = {
+			isa = PBXGroup;
+			children = (
+				DBF9EAB827125C7E00A9C1D9 /* NowPlayingTableCellView.swift */,
+				DBF9EABA27125C8A00A9C1D9 /* NowPlayingTableCellViewModel.swift */,
+			);
+			path = NowPlayingCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -384,14 +453,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB6BABFE270FAF6E00AE0F3D /* HomeView.swift in Sources */,
+				DB6E30A5271285DA00F72F66 /* UIColor+Extensions.swift in Sources */,
 				DB6BABFC270FAF6E00AE0F3D /* HomeModels.swift in Sources */,
 				DB28519F27111AD700EE6A8C /* PopularMovieCollectionCellView.swift in Sources */,
+				DBF9EAB927125C7E00A9C1D9 /* NowPlayingTableCellView.swift in Sources */,
 				DB6BAC13270FC6CD00AE0F3D /* SearchViewModel.swift in Sources */,
 				DB2851A327111C3700EE6A8C /* Constraints.swift in Sources */,
 				DB6BABFF270FAF6E00AE0F3D /* HomeViewModel.swift in Sources */,
 				DB6BABC5270FAC4300AE0F3D /* AppDelegate.swift in Sources */,
 				DB6BAC1E270FC9D700AE0F3D /* WatchedViewController.swift in Sources */,
 				DB6BAC04270FBCA900AE0F3D /* Router.swift in Sources */,
+				DB6E30A32712858D00F72F66 /* CGFloat+Extensions.swift in Sources */,
+				DB6E309F2712788C00F72F66 /* GenreCollectionCellView.swift in Sources */,
+				DBF9EAB62712243F00A9C1D9 /* ImageView+Extensions.swift in Sources */,
 				DB6BAC1C270FC9D700AE0F3D /* WatchedWorker.swift in Sources */,
 				DB6BAC0F270FC6CD00AE0F3D /* SearchWorker.swift in Sources */,
 				DB2851A72711582A00EE6A8C /* Bindable.swift in Sources */,
@@ -406,6 +480,8 @@
 				DB6BAC12270FC6CD00AE0F3D /* SearchView.swift in Sources */,
 				DB94E705270FCBFE00818828 /* CustomTabBarItems.swift in Sources */,
 				DB28519C27111A2900EE6A8C /* TableViewDataSource.swift in Sources */,
+				DBF9EABB27125C8A00A9C1D9 /* NowPlayingTableCellViewModel.swift in Sources */,
+				DB6E30A12712789A00F72F66 /* GenreCollectionCellViewModel.swift in Sources */,
 				DB6BABC7270FAC4300AE0F3D /* SceneDelegate.swift in Sources */,
 				DB6BAC1D270FC9D700AE0F3D /* WatchedModels.swift in Sources */,
 				DB6BAC06270FBDB600AE0F3D /* AppRouter.swift in Sources */,
@@ -581,10 +657,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Filmes/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = iMoovie;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -607,10 +685,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Filmes/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = iMoovie;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

@@ -5,19 +5,17 @@
 //  Created by Filipe Oliveira on 08/10/21.
 //
 
-import Foundation
 import UIKit
 
 final class PopularMovieCollectionCellView: UICollectionViewCell {
   static let identifier = "PopularMovieCollectionCellView"
-  
-  let cardBackground: UIView = {
-    let view = UIView()
-    view.backgroundColor = .red
+  let backgroundImage: UIImageView = {
+    let view = UIImageView()
+    view.layer.cornerRadius = 8
+    view.layer.masksToBounds = true
     view.translatesAutoresizingMaskIntoConstraints = false
     return view
   }()
-  
   let movieNameLabel: UILabel = {
     let view = UILabel()
     view.textColor = .gray
@@ -41,19 +39,19 @@ final class PopularMovieCollectionCellView: UICollectionViewCell {
   }
   
   private func setupComponents() {
-    contentView.addSubview(cardBackground)
+    contentView.addSubview(backgroundImage)
     contentView.addSubview(movieNameLabel)
     
     installConstraints()
   }
   
   private func installConstraints() {
-    cardBackground.anchor(topAnchor: contentView.topAnchor,
-                          leadingAnchor: contentView.leadingAnchor,
-                          trailingAnchor: contentView.trailingAnchor)
-    cardBackground.heightAnchor.constraint(equalToConstant: 64).isActive = true
+    backgroundImage.anchor(topAnchor: contentView.topAnchor,
+                           leadingAnchor: contentView.leadingAnchor,
+                           trailingAnchor:contentView.trailingAnchor)
+//    backgroundImage.heightAnchor.constraint(equalToConstant: 64).isActive = true
     
-    movieNameLabel.anchor(topAnchor: cardBackground.bottomAnchor,
+    movieNameLabel.anchor(topAnchor: backgroundImage.bottomAnchor,
                           leadingAnchor: contentView.leadingAnchor,
                           trailingAnchor: contentView.trailingAnchor,
                           bottomAnchor: contentView.bottomAnchor)
