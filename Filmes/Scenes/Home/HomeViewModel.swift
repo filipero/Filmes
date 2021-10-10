@@ -49,14 +49,15 @@ class HomeViewModel {
 extension HomeViewModel: HomeViewModelProtocol {
   public func requestConfiguration() {
     service.requestConfiguration {
-      self.requestPopularMoviesList()
-      self.requestNowPlayingMovies()
+      self.requestPopularMoviesList(atPage: 1)
+      self.requestNowPlayingMovies(atPage: 1)
       self.requestGenres()
     }
   }
-  public func requestPopularMoviesList() {
-    service.requestPopularMovies(atPage: 1) { result in
-      guard let baseUrl = self.service.configuration?.images.secureBaseURL else { return }
+  public func requestPopularMoviesList(atPage page: Int,
+                                       session: SessionCore = SessionCore.shared) {
+    service.requestPopularMovies(atPage: page) { result in
+      let baseUrl = session.session.imageSecureBaseUrl
       let popularMovies: [PopularMovieCollectionCellViewModel] = result.results.map {
         PopularMovieCollectionCellViewModel(movieId: $0.id,
                                             title: $0.originalTitle,
@@ -69,9 +70,10 @@ extension HomeViewModel: HomeViewModelProtocol {
     }
   }
   
-  public func requestNowPlayingMovies() {
+  public func requestNowPlayingMovies(atPage page: Int,
+                                      session: SessionCore = SessionCore.shared) {
     service.requestNowPlayingMovies(atPage: 1) { result in
-      guard let baseUrl = self.service.configuration?.images.secureBaseURL else { return }
+      let baseUrl = session.session.imageSecureBaseUrl
       let nowPlayingMovies: [NowPlayingTableCellViewModel] = result.results.map {
         NowPlayingTableCellViewModel(movieId: $0.id,
                                      movieName: $0.title,

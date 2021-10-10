@@ -7,8 +7,6 @@
 import Foundation
 
 protocol HomeWorkerProtocol: AnyObject {
-  var configuration: HomeModels.Image? { get }
-  
   func requestPopularMovies(atPage page: Int, completionHandler: @escaping (HomeModels.PopularMoviesResponse) -> Void)
   func requestNowPlayingMovies(atPage page: Int, completionHandler: @escaping(HomeModels.NowPlayingResponse) -> Void)
   func requestMovieGenres(completionHandler: @escaping (HomeModels.GenresResponse) -> Void)
@@ -16,16 +14,22 @@ protocol HomeWorkerProtocol: AnyObject {
 }
 
 class HomeWorker {
-  private var baseUrl: String = "https://api.themoviedb.org/3/"
-  private var apiKey: String = "5bb425e36318deff6fd66b834ae1e726"
-  private var language: String = "pt-BR"
-  public var configuration: HomeModels.Image?
+  private var session: SessionCore
+  
+  init() {
+    let sessionData = SessionCore.SessionData(imageSecureBaseUrl: "")
+    SessionCore.createSession(sessionData)
+    self.session = SessionCore.shared
+  }
+  
 }
 
 //MARK: - HomeWorkerProtocol
 
 extension HomeWorker: HomeWorkerProtocol {
   func requestConfiguration(completionHandler: @escaping () -> Void) {
+    let baseUrl = session.serverSecureBaseUrl
+    let apiKey = session.apiKey
     guard let url = URL(string: "\(baseUrl)configuration?api_key=\(apiKey)") else { return }
     
     let task = URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
@@ -41,7 +45,9 @@ extension HomeWorker: HomeWorkerProtocol {
             }
       if let data = data,
          let configData = try? JSONDecoder().decode(HomeModels.Image.self, from: data) {
-        self.configuration = configData
+        let sessionData = SessionCore.SessionData(imageSecureBaseUrl: configData.images.secureBaseURL)
+        SessionCore.createSession(sessionData)
+        
         completionHandler()
       }
     })
@@ -49,6 +55,9 @@ extension HomeWorker: HomeWorkerProtocol {
   }
   
   func requestNowPlayingMovies(atPage page: Int, completionHandler: @escaping(HomeModels.NowPlayingResponse) -> Void) {
+    let baseUrl = session.serverSecureBaseUrl
+    let apiKey = session.apiKey
+    let language = session.defaultLanguage
     guard let url = URL(string: "\(baseUrl)movie/now_playing?api_key=\(apiKey)&language=\(language)&page=\(page)") else { return }
     
     let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
@@ -71,6 +80,10 @@ extension HomeWorker: HomeWorkerProtocol {
   }
   
   func requestPopularMovies(atPage page: Int, completionHandler: @escaping (HomeModels.PopularMoviesResponse) -> Void) {
+    let baseUrl = session.serverSecureBaseUrl
+    let apiKey = session.apiKey
+    let language = session.defaultLanguage
+    
     guard let url = URL(string: "\(baseUrl)movie/popular?api_key=\(apiKey)&language=\(language)&page=\(page)") else { return }
     
     let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
@@ -94,6 +107,9 @@ extension HomeWorker: HomeWorkerProtocol {
   }
   
   func requestMovieGenres(completionHandler: @escaping (HomeModels.GenresResponse) -> Void) {
+    let baseUrl = session.serverSecureBaseUrl
+    let apiKey = session.apiKey
+    let language = session.defaultLanguage
     guard let url = URL(string: "\(baseUrl)genre/movie/list?api_key=\(apiKey)&language=\(language)") else { return }
     
     let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
