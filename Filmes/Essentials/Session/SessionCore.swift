@@ -24,10 +24,6 @@ public class SessionCore {
   private init(sessionData: SessionData) {
     self.session = sessionData
   }
-  
-  public struct SessionData: Codable {
-    let imageSecureBaseUrl: String
-  }
 }
 
 extension SessionCore {
