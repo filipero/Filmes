@@ -45,6 +45,11 @@
 		DB6E30A12712789A00F72F66 /* GenreCollectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6E30A02712789A00F72F66 /* GenreCollectionCellViewModel.swift */; };
 		DB6E30A32712858D00F72F66 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6E30A22712858D00F72F66 /* CGFloat+Extensions.swift */; };
 		DB6E30A5271285DA00F72F66 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6E30A4271285DA00F72F66 /* UIColor+Extensions.swift */; };
+		DB77947E27129C1100B5C6FA /* detailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77947927129C1100B5C6FA /* detailsWorker.swift */; };
+		DB77947F27129C1100B5C6FA /* detailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77947A27129C1100B5C6FA /* detailsModels.swift */; };
+		DB77948027129C1100B5C6FA /* detailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77947B27129C1100B5C6FA /* detailsViewController.swift */; };
+		DB77948127129C1100B5C6FA /* detailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77947C27129C1100B5C6FA /* detailsView.swift */; };
+		DB77948227129C1100B5C6FA /* detailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77947D27129C1100B5C6FA /* detailsViewModel.swift */; };
 		DB94E705270FCBFE00818828 /* CustomTabBarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB94E704270FCBFE00818828 /* CustomTabBarItems.swift */; };
 		DBF9EAB62712243F00A9C1D9 /* ImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF9EAB52712243F00A9C1D9 /* ImageView+Extensions.swift */; };
 		DBF9EAB927125C7E00A9C1D9 /* NowPlayingTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF9EAB827125C7E00A9C1D9 /* NowPlayingTableCellView.swift */; };
@@ -111,6 +116,11 @@
 		DB6E30A02712789A00F72F66 /* GenreCollectionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCollectionCellViewModel.swift; sourceTree = "<group>"; };
 		DB6E30A22712858D00F72F66 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
 		DB6E30A4271285DA00F72F66 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		DB77947927129C1100B5C6FA /* detailsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailsWorker.swift; sourceTree = "<group>"; };
+		DB77947A27129C1100B5C6FA /* detailsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailsModels.swift; sourceTree = "<group>"; };
+		DB77947B27129C1100B5C6FA /* detailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailsViewController.swift; sourceTree = "<group>"; };
+		DB77947C27129C1100B5C6FA /* detailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailsView.swift; sourceTree = "<group>"; };
+		DB77947D27129C1100B5C6FA /* detailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailsViewModel.swift; sourceTree = "<group>"; };
 		DB94E704270FCBFE00818828 /* CustomTabBarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarItems.swift; sourceTree = "<group>"; };
 		DBF9EAB52712243F00A9C1D9 /* ImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+Extensions.swift"; sourceTree = "<group>"; };
 		DBF9EAB827125C7E00A9C1D9 /* NowPlayingTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingTableCellView.swift; sourceTree = "<group>"; };
@@ -202,6 +212,7 @@
 		DB6BABF4270FAE5100AE0F3D /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				DB77947827129BF700B5C6FA /* Details */,
 				DB6BABF5270FAF5200AE0F3D /* Home */,
 				DB6BAC09270FC6AB00AE0F3D /* Search */,
 				DB6BAC16270FC9BE00AE0F3D /* Watched */,
@@ -311,6 +322,18 @@
 				DB28519B27111A2900EE6A8C /* TableViewDataSource.swift */,
 			);
 			path = CustomHelpers;
+			sourceTree = "<group>";
+		};
+		DB77947827129BF700B5C6FA /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				DB77947927129C1100B5C6FA /* detailsWorker.swift */,
+				DB77947A27129C1100B5C6FA /* detailsModels.swift */,
+				DB77947B27129C1100B5C6FA /* detailsViewController.swift */,
+				DB77947C27129C1100B5C6FA /* detailsView.swift */,
+				DB77947D27129C1100B5C6FA /* detailsViewModel.swift */,
+			);
+			path = Details;
 			sourceTree = "<group>";
 		};
 		DBF9EAB727125C6400A9C1D9 /* NowPlayingCell */ = {
@@ -455,6 +478,7 @@
 				DB6BABFE270FAF6E00AE0F3D /* HomeView.swift in Sources */,
 				DB6E30A5271285DA00F72F66 /* UIColor+Extensions.swift in Sources */,
 				DB6BABFC270FAF6E00AE0F3D /* HomeModels.swift in Sources */,
+				DB77948227129C1100B5C6FA /* detailsViewModel.swift in Sources */,
 				DB28519F27111AD700EE6A8C /* PopularMovieCollectionCellView.swift in Sources */,
 				DBF9EAB927125C7E00A9C1D9 /* NowPlayingTableCellView.swift in Sources */,
 				DB6BAC13270FC6CD00AE0F3D /* SearchViewModel.swift in Sources */,
@@ -462,6 +486,7 @@
 				DB6BABFF270FAF6E00AE0F3D /* HomeViewModel.swift in Sources */,
 				DB6BABC5270FAC4300AE0F3D /* AppDelegate.swift in Sources */,
 				DB6BAC1E270FC9D700AE0F3D /* WatchedViewController.swift in Sources */,
+				DB77947E27129C1100B5C6FA /* detailsWorker.swift in Sources */,
 				DB6BAC04270FBCA900AE0F3D /* Router.swift in Sources */,
 				DB6E30A32712858D00F72F66 /* CGFloat+Extensions.swift in Sources */,
 				DB6E309F2712788C00F72F66 /* GenreCollectionCellView.swift in Sources */,
@@ -485,6 +510,9 @@
 				DB6BABC7270FAC4300AE0F3D /* SceneDelegate.swift in Sources */,
 				DB6BAC1D270FC9D700AE0F3D /* WatchedModels.swift in Sources */,
 				DB6BAC06270FBDB600AE0F3D /* AppRouter.swift in Sources */,
+				DB77948127129C1100B5C6FA /* detailsView.swift in Sources */,
+				DB77947F27129C1100B5C6FA /* detailsModels.swift in Sources */,
+				DB77948027129C1100B5C6FA /* detailsViewController.swift in Sources */,
 				DB6BABFD270FAF6E00AE0F3D /* HomeViewController.swift in Sources */,
 				DB6BAC08270FBE5000AE0F3D /* HomeRouter.swift in Sources */,
 				DB2851A52711295100EE6A8C /* CollectionViewDataSource.swift in Sources */,
