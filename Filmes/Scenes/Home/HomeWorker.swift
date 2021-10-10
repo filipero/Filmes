@@ -7,6 +7,8 @@
 import Foundation
 
 protocol HomeWorkerProtocol: AnyObject {
+  var configuration: HomeModels.Image? { get }
+  
   func requestPopularMovies(atPage page: Int, completionHandler: @escaping (HomeModels.PopularMoviesResponse) -> Void)
   func requestNowPlayingMovies(atPage page: Int, completionHandler: @escaping(HomeModels.NowPlayingResponse) -> Void)
   func requestMovieGenres(completionHandler: @escaping (HomeModels.GenresResponse) -> Void)
@@ -14,19 +16,17 @@ protocol HomeWorkerProtocol: AnyObject {
 }
 
 class HomeWorker {
-
+  private var baseUrl: String = "https://api.themoviedb.org/3/"
+  private var apiKey: String = "5bb425e36318deff6fd66b834ae1e726"
+  private var language: String = "pt-BR"
+  public var configuration: HomeModels.Image?
 }
 
 //MARK: - HomeWorkerProtocol
 
 extension HomeWorker: HomeWorkerProtocol {
-  static var configuration: HomeModels.Image?
-  static var baseUrl: String = "https://api.themoviedb.org/3/"
-  static var apiKey: String = "5bb425e36318deff6fd66b834ae1e726"
-  static var language: String = "pt-BR"
-  
   func requestConfiguration(completionHandler: @escaping () -> Void) {
-    guard let url = URL(string: "\(HomeWorker.baseUrl)configuration?api_key=\(HomeWorker.apiKey)") else { return }
+    guard let url = URL(string: "\(baseUrl)configuration?api_key=\(apiKey)") else { return }
     
     let task = URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
       if let error = error {
@@ -41,7 +41,7 @@ extension HomeWorker: HomeWorkerProtocol {
             }
       if let data = data,
          let configData = try? JSONDecoder().decode(HomeModels.Image.self, from: data) {
-        HomeWorker.configuration = configData
+        self.configuration = configData
         completionHandler()
       }
     })
@@ -49,7 +49,7 @@ extension HomeWorker: HomeWorkerProtocol {
   }
   
   func requestNowPlayingMovies(atPage page: Int, completionHandler: @escaping(HomeModels.NowPlayingResponse) -> Void) {
-    guard let url = URL(string: "\(HomeWorker.baseUrl)movie/now_playing?api_key=\(HomeWorker.apiKey)&language=\(HomeWorker.language)&page=\(page)") else { return }
+    guard let url = URL(string: "\(baseUrl)movie/now_playing?api_key=\(apiKey)&language=\(language)&page=\(page)") else { return }
     
     let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
       if let error = error {
@@ -71,7 +71,7 @@ extension HomeWorker: HomeWorkerProtocol {
   }
   
   func requestPopularMovies(atPage page: Int, completionHandler: @escaping (HomeModels.PopularMoviesResponse) -> Void) {
-    guard let url = URL(string: "\(HomeWorker.baseUrl)movie/popular?api_key=\(HomeWorker.apiKey)&language=\(HomeWorker.language)&page=\(page)") else { return }
+    guard let url = URL(string: "\(baseUrl)movie/popular?api_key=\(apiKey)&language=\(language)&page=\(page)") else { return }
     
     let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
       if let error = error {
@@ -94,7 +94,7 @@ extension HomeWorker: HomeWorkerProtocol {
   }
   
   func requestMovieGenres(completionHandler: @escaping (HomeModels.GenresResponse) -> Void) {
-    guard let url = URL(string: "\(HomeWorker.baseUrl)genre/movie/list?api_key=\(HomeWorker.apiKey)&language=\(HomeWorker.language)") else { return }
+    guard let url = URL(string: "\(baseUrl)genre/movie/list?api_key=\(apiKey)&language=\(language)") else { return }
     
     let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
       if let error = error {

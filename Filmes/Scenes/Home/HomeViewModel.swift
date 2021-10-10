@@ -56,7 +56,7 @@ extension HomeViewModel: HomeViewModelProtocol {
   }
   public func requestPopularMoviesList() {
     service.requestPopularMovies(atPage: 1) { result in
-      guard let baseUrl = HomeWorker.configuration?.images.secureBaseURL else { return }
+      guard let baseUrl = self.service.configuration?.images.secureBaseURL else { return }
       let popularMovies: [PopularMovieCollectionCellViewModel] = result.results.map {
         PopularMovieCollectionCellViewModel(movieId: $0.id,
                                             title: $0.originalTitle,
@@ -71,7 +71,7 @@ extension HomeViewModel: HomeViewModelProtocol {
   
   public func requestNowPlayingMovies() {
     service.requestNowPlayingMovies(atPage: 1) { result in
-      guard let baseUrl = HomeWorker.configuration?.images.secureBaseURL else { return }
+      guard let baseUrl = self.service.configuration?.images.secureBaseURL else { return }
       let nowPlayingMovies: [NowPlayingTableCellViewModel] = result.results.map {
         NowPlayingTableCellViewModel(movieId: $0.id,
                                      movieName: $0.title,
