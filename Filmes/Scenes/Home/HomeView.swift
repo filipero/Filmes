@@ -33,7 +33,7 @@ final class HomeView: BaseView {
   let MoviesLabel: UILabel = {
     let view = UILabel()
     view.font = .boldSystemFont(ofSize: 15)
-    view.text = "Filmes"
+    view.text = "Em Cartaz"
     view.translatesAutoresizingMaskIntoConstraints = false
     return view
   }()
