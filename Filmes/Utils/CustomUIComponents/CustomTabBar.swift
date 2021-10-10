@@ -9,6 +9,7 @@ import UIKit
 
 class CustomTabBar: UITabBarController {
   override func viewDidLoad() {
-    view.backgroundColor = .white
+    tabBar.backgroundColor = .white
+    view.tintColor = .gray
   }
 }

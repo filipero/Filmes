@@ -21,6 +21,15 @@ public enum Constants: CGFloat {
 }
 
 extension UIView {
+  public func anchor(to otherView: UIView,
+                     xPadding horizontalPadding: Constants = .zero,
+                     yPadding verticalPadding: Constants = .zero) {
+    self.topAnchor.constraint(equalTo: otherView.topAnchor, constant: verticalPadding.rawValue).isActive = true
+    self.leadingAnchor.constraint(equalTo: otherView.leadingAnchor, constant: horizontalPadding.rawValue).isActive = true
+    self.trailingAnchor.constraint(equalTo: otherView.trailingAnchor, constant: -horizontalPadding.rawValue).isActive = true
+    self.bottomAnchor.constraint(equalTo: otherView.bottomAnchor, constant: -verticalPadding.rawValue).isActive = true
+  }
+  
   public func anchor(topAnchor: NSLayoutYAxisAnchor? = nil, _ topConstant: Constants = .zero,
               leadingAnchor: NSLayoutXAxisAnchor? = nil, _ leadingConstant: Constants = .zero,
               trailingAnchor: NSLayoutXAxisAnchor? = nil, _ trailingConstant: Constants = .zero,
@@ -43,21 +52,6 @@ extension UIView {
     if let bottomAnchor = bottomAnchor {
       self.bottomAnchor.constraint(equalTo: bottomAnchor,
                                    constant: -bottomConstant.rawValue).isActive = true
-    }
-  }
-  
-  public func size(heightAnchor: NSLayoutDimension?, _ heightConstant: Constants? = .zero,
-                   widthAnchor: NSLayoutDimension?, _ widthConstant: Constants? = .zero) {
-    if let heightAnchor = heightAnchor,
-       let heightConstant = heightConstant {
-      self.heightAnchor.constraint(equalTo: heightAnchor,
-                                   constant: heightConstant.rawValue).isActive = true
-    }
-    
-    if let widthAnchor = widthAnchor,
-       let widthConstant = widthConstant {
-      self.widthAnchor.constraint(equalTo: widthAnchor,
-                                  constant: widthConstant.rawValue).isActive = true
     }
   }
 }
