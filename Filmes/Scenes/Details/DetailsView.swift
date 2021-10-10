@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class detailsView: BaseView {
+final class DetailsView: BaseView {
 
   //MARK: - Initialize
 

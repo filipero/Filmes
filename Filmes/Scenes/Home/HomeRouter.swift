@@ -66,10 +66,10 @@ extension HomeRouter: HomeNavigationDelegate {
   }
   
   func goToMovieDetails(movieId: Int) {
-    let viewModel: detailsViewModel = detailsViewModel(service: detailsWorker(),
+    let viewModel: DetailsViewModel = DetailsViewModel(service: DetailsWorker(),
                                                        navigationDelegate: self,
                                                        movieId: movieId)
-    let viewController: detailsViewController = detailsViewController(viewModel: viewModel)
+    let viewController: DetailsViewController = DetailsViewController(viewModel: viewModel)
     
     presenter.pushViewController(viewController, animated: true)
   }
@@ -89,6 +89,6 @@ extension HomeRouter: WatchedNavigationDelegate {
   
 }
 
-extension HomeRouter: detailsNavigationDelegate {
+extension HomeRouter: DetailsNavigationDelegate {
   
 }

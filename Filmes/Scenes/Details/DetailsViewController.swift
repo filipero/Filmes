@@ -6,15 +6,15 @@
 
 import UIKit
 
-final class detailsViewController: UIViewController {
-  private(set) lazy var baseView: detailsView = {
-  	let view = detailsView()
+final class DetailsViewController: UIViewController {
+  private(set) lazy var baseView: DetailsView = {
+  	let view = DetailsView()
   	return view
   }()
 
-  let viewModel: detailsViewModelProtocol
+  let viewModel: DetailsViewModelProtocol
 
-  init(viewModel: detailsViewModelProtocol) {
+  init(viewModel: DetailsViewModelProtocol) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: .main)
   }
