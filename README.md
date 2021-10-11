@@ -25,7 +25,7 @@ O projeto não conta com automação.
 Criar um aplicativo de listagem de filmes através do consumo de uma API.
 
 ## O Aplicativo
-# O que foi feito:
+### O que foi feito:
     - Sistema de sessão do app para armazenar informações como url da api, chave de api e linguagem preferida.
     - Alguns dos requests para a tela Início, sendo eles:
         - Request de Filmes Populares
@@ -42,7 +42,7 @@ Criar um aplicativo de listagem de filmes através do consumo de uma API.
     - Navegação para tela de Detalhes do Filme selecionado
     - Testes Unitários para a tela Início
 
-# O que ainda não foi feito:
+### O que ainda não foi feito:
     - Layout Tela de Detalhes do Filme Selecionado
     - Layout Tela Busca
     - Layout Tela Assistidos
@@ -53,7 +53,7 @@ Criar um aplicativo de listagem de filmes através do consumo de uma API.
     - Armazenar Filmes marcados como assistidos localmente.
     
     
-# Ideias para o futuro:
+### Ideias para o futuro:
     - Tornar a tela Início Dinâmica, podendo controlar as listagens mostradas através de um fluxo back-end.
     - Testes de UI
     - Fluxo de Login / Autenticação
