@@ -18,6 +18,7 @@ protocol HomeViewModelProtocol: AnyObject {
   var nowPlayingState: Bindable<Void> { get }
   var genreDataSource: CollectionViewDataSource<GenreCollectionCellViewModel> { get }
   var genreState: Bindable<Void> { get }
+  var nowPlayingLabelText: String { get }
   
   func goToMovieDetails(movieId: Int)
   func goToMovieList(withGenre genre: HomeModels.Genre)
@@ -35,6 +36,8 @@ class HomeViewModel {
   
   var genreDataSource: CollectionViewDataSource<GenreCollectionCellViewModel> = .make(for: [])
   var genreState: Bindable<Void> = Bindable()
+  
+  var nowPlayingLabelText: String = "Em Cartaz"
   
   init(service: HomeWorkerProtocol = HomeWorker(),
        navigationDelegate: HomeNavigationDelegate? = nil) {

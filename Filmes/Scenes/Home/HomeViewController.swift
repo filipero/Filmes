@@ -38,6 +38,8 @@ final class HomeViewController: UIViewController {
   }
   
   private func setupBinds() {
+    self.baseView.MoviesLabel.text = self.viewModel.nowPlayingLabelText
+    
     viewModel.popularMoviesState.addObservation(for: self) { _,_ in
       self.baseView.popularMoviesCollectionView.dataSource = self.viewModel.popularMoviesDataSource
       self.baseView.popularMoviesCollectionView.delegate = self
