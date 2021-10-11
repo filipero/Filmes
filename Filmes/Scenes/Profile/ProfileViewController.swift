@@ -1,20 +1,20 @@
 //
-//  WatchedViewController.swift
+//  ProfileViewController.swift
 //  Filmes
 //
-//  Created by Filipe Oliveira on 07/10/21.
+//  Created by Filipe Oliveira on 10/10/21.
 
 import UIKit
 
-final class WatchedViewController: UIViewController {
-  private(set) lazy var baseView: WatchedView = {
-  	let view = WatchedView()
+final class ProfileViewController: UIViewController {
+  private(set) lazy var baseView: ProfileView = {
+  	let view = ProfileView()
   	return view
   }()
 
-  let viewModel: WatchedViewModelProtocol
+  let viewModel: ProfileViewModelProtocol
 
-  init(viewModel: WatchedViewModelProtocol) {
+  init(viewModel: ProfileViewModelProtocol) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: .main)
   }
@@ -33,7 +33,7 @@ final class WatchedViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+
     setupBinds()
   }
 

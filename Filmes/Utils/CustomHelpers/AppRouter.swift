@@ -27,7 +27,7 @@ class AppRouter: Router {
   }
 
   func start() {
-    let homeRouter = HomeRouter(presenter: navigationController, navigationDelegate: self)
+    let homeRouter = MainRouter(presenter: navigationController, navigationDelegate: self)
     addChildRouter(homeRouter)
     homeRouter.start()
   }

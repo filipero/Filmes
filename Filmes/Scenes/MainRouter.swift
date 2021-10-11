@@ -1,6 +1,6 @@
 //
-//  HomeRouter.swift
-//  HomeRouter
+//  MainRouter.swift
+//  MainRouter
 //
 //  Created by Filipe Oliveira on 07/10/21.
 //
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class HomeRouter: NSObject, Router {
+final class MainRouter: NSObject, Router {
   var childRouters: [Router] = []
   private let presenter: UINavigationController
   private weak var navigationDelegate: RouterDelegate?
@@ -36,10 +36,10 @@ final class HomeRouter: NSObject, Router {
     let watchedViewModel: WatchedViewModel = WatchedViewModel(service: WatchedWorker(),
                                                               navigationDelegate: self)
     let watchedViewController: WatchedViewController = WatchedViewController(viewModel: watchedViewModel)
-    
-//    let profileViewModel: ProfileViewModel = ProfileViewModel(service: ProfileWorker(),
-//                                                              navigationDelegate: self)
-    let profileViewController: UIViewController = UIViewController()
+  
+    let profileViewModel: ProfileViewModel = ProfileViewModel(service: ProfileWorker(),
+                                                              navigationDelegate: self)
+    let profileViewController: UIViewController = ProfileViewController(viewModel: profileViewModel)
     
     let tabbarController: UITabBarController = CustomTabBar()
     
@@ -53,16 +53,16 @@ final class HomeRouter: NSObject, Router {
                                         watchedViewController,
                                         profileViewController]
     
-    tabbarController.selectedViewController = homeViewController
+    tabbarController.selectedViewController = profileViewController
     presenter.pushViewController(tabbarController, animated: true)
   }
 }
 
 //MARK: - HomeNavigationDelegate
 
-extension HomeRouter: HomeNavigationDelegate {
+extension MainRouter: HomeNavigationDelegate {
   func goToMovieList(withGenre genre: HomeModels.Genre) {
-//    goToMovieList implementation
+    
   }
   
   func goToMovieDetails(movieId: Int) {
@@ -79,16 +79,24 @@ extension HomeRouter: HomeNavigationDelegate {
 
 //MARK: - SearchNavigationDelegate
 
-extension HomeRouter: SearchNavigationDelegate {
+extension MainRouter: SearchNavigationDelegate {
   
 }
 
 //MARK: - WatchedNavigationDelegate
 
-extension HomeRouter: WatchedNavigationDelegate {
+extension MainRouter: WatchedNavigationDelegate {
   
 }
 
-extension HomeRouter: DetailsNavigationDelegate {
+//MARK: - DetailsNavigationDelegate
+
+extension MainRouter: DetailsNavigationDelegate {
+  
+}
+
+//MARK: - ProfileNavigationDelegate
+
+extension MainRouter: ProfileNavigationDelegate {
   
 }

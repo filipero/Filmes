@@ -1,12 +1,12 @@
 //
-//  SearchView.swift
+//  ProfileView.swift
 //  Filmes
 //
-//  Created by Filipe Oliveira on 07/10/21.
+//  Created by Filipe Oliveira on 10/10/21.
 
 import UIKit
 
-final class SearchView: BaseView {
+final class ProfileView: BaseView {
   let underConstructionImageView: UIImageView = {
     let view = UIImageView()
     view.contentMode = .scaleAspectFit
