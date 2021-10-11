@@ -38,6 +38,7 @@ final class DetailsViewController: UIViewController {
   }
 
   private func setupBinds() {
-    
+    self.baseView.underConstructionImageView.image = self.viewModel.underConstructionImage
+    self.baseView.underConstructionLabel.text = self.viewModel.underConstructionText
   }
 }

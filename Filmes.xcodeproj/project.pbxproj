@@ -12,6 +12,7 @@
 		DB0F5FE42713D73F0001BFC9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0F5FDF2713D73F0001BFC9 /* ProfileViewController.swift */; };
 		DB0F5FE52713D73F0001BFC9 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0F5FE02713D73F0001BFC9 /* ProfileView.swift */; };
 		DB0F5FE62713D73F0001BFC9 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0F5FE12713D73F0001BFC9 /* ProfileViewModel.swift */; };
+		DB0F5FE82713DC120001BFC9 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0F5FE72713DC120001BFC9 /* CustomNavigationController.swift */; };
 		DB28519C27111A2900EE6A8C /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB28519B27111A2900EE6A8C /* TableViewDataSource.swift */; };
 		DB28519F27111AD700EE6A8C /* PopularMovieCollectionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB28519E27111AD700EE6A8C /* PopularMovieCollectionCellView.swift */; };
 		DB2851A127111AF100EE6A8C /* PopularMovieCollectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2851A027111AF100EE6A8C /* PopularMovieCollectionCellViewModel.swift */; };
@@ -85,6 +86,7 @@
 		DB0F5FDF2713D73F0001BFC9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		DB0F5FE02713D73F0001BFC9 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		DB0F5FE12713D73F0001BFC9 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		DB0F5FE72713DC120001BFC9 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		DB28519B27111A2900EE6A8C /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		DB28519E27111AD700EE6A8C /* PopularMovieCollectionCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMovieCollectionCellView.swift; sourceTree = "<group>"; };
 		DB2851A027111AF100EE6A8C /* PopularMovieCollectionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMovieCollectionCellViewModel.swift; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 				DB6BAC01270FBB5300AE0F3D /* BaseView.swift */,
 				DB2851A227111C3700EE6A8C /* Constraints.swift */,
 				DB6BAC14270FC8BB00AE0F3D /* CustomTabBar.swift */,
+				DB0F5FE72713DC120001BFC9 /* CustomNavigationController.swift */,
 			);
 			path = CustomUIComponents;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				DB77947E27129C1100B5C6FA /* DetailsWorker.swift in Sources */,
 				DB6BAC04270FBCA900AE0F3D /* Router.swift in Sources */,
 				DB6E30A32712858D00F72F66 /* CGFloat+Extensions.swift in Sources */,
+				DB0F5FE82713DC120001BFC9 /* CustomNavigationController.swift in Sources */,
 				DB6E309F2712788C00F72F66 /* GenreCollectionCellView.swift in Sources */,
 				DB0F5FE22713D73F0001BFC9 /* ProfileWorker.swift in Sources */,
 				DBF9EAB62712243F00A9C1D9 /* ImageView+Extensions.swift in Sources */,

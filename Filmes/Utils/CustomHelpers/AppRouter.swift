@@ -16,7 +16,7 @@ class AppRouter: Router {
   }
 
   lazy var navigationController: UINavigationController = {
-    let navigationController = UINavigationController()
+    let navigationController = CustomNavigationController()
     return navigationController
   }()
 

@@ -53,7 +53,7 @@ final class MainRouter: NSObject, Router {
                                         watchedViewController,
                                         profileViewController]
     
-    tabbarController.selectedViewController = profileViewController
+    tabbarController.selectedViewController = homeViewController
     presenter.pushViewController(tabbarController, animated: true)
   }
 }
