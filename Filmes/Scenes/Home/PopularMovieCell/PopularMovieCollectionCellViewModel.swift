@@ -14,6 +14,6 @@ struct PopularMovieCollectionCellViewModel {
   
   func configure(cell: PopularMovieCollectionCellView) {
     cell.movieNameLabel.text = title
-    cell.backgroundImage.downloaded(from: moviePosterUrl, contentMode: .scaleToFill)
+    cell.backdropImageView.downloaded(from: moviePosterUrl, contentMode: .scaleToFill)
   }
 }

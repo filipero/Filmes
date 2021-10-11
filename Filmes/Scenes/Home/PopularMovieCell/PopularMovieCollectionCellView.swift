@@ -9,19 +9,28 @@ import UIKit
 
 final class PopularMovieCollectionCellView: UICollectionViewCell {
   static let identifier = "PopularMovieCollectionCellView"
-  let backgroundImage: UIImageView = {
+  let backdropImageView: UIImageView = {
     let view = UIImageView()
     view.layer.cornerRadius = 8
     view.layer.masksToBounds = true
+    view.backgroundColor = .gray.withAlphaComponent(0.3)
     view.translatesAutoresizingMaskIntoConstraints = false
     return view
   }()
   let movieNameLabel: UILabel = {
     let view = UILabel()
     view.textColor = .gray
-    view.font = .systemFont(ofSize: 12)
     view.adjustsFontSizeToFitWidth = true
     view.textAlignment = .center
+    view.translatesAutoresizingMaskIntoConstraints = false
+    return view
+  }()
+  lazy var mainStackView: UIStackView = {
+    let view = UIStackView(arrangedSubviews: [backdropImageView,
+                                              movieNameLabel])
+    view.spacing = 4
+    view.axis = .vertical
+    view.distribution = .fillProportionally
     view.translatesAutoresizingMaskIntoConstraints = false
     return view
   }()
@@ -39,21 +48,13 @@ final class PopularMovieCollectionCellView: UICollectionViewCell {
   }
   
   private func setupComponents() {
-    contentView.addSubview(backgroundImage)
-    contentView.addSubview(movieNameLabel)
+    contentView.addSubview(mainStackView)
     
     installConstraints()
   }
   
   private func installConstraints() {
-    backgroundImage.anchor(topAnchor: contentView.topAnchor,
-                           leadingAnchor: contentView.leadingAnchor,
-                           trailingAnchor:contentView.trailingAnchor)
-//    backgroundImage.heightAnchor.constraint(equalToConstant: 64).isActive = true
-    
-    movieNameLabel.anchor(topAnchor: backgroundImage.bottomAnchor,
-                          leadingAnchor: contentView.leadingAnchor,
-                          trailingAnchor: contentView.trailingAnchor,
-                          bottomAnchor: contentView.bottomAnchor)
+    mainStackView.anchor(to: contentView)
+    movieNameLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 16).isActive = true
   }
 }

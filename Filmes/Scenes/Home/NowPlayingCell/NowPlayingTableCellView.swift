@@ -28,7 +28,7 @@ final class NowPlayingTableCellView: UITableViewCell {
     view.textColor = .orange
     return view
   }()
-  lazy var ratingStackView: UIStackView = {
+  private lazy var ratingStackView: UIStackView = {
     let view = UIStackView(arrangedSubviews: [movieRatingIcon,
                                               movieRatingLabel])
     view.spacing = 0
@@ -41,7 +41,7 @@ final class NowPlayingTableCellView: UITableViewCell {
     view.textColor = .gray
     return view
   }()
-  lazy var movieDetailsStackView: UIStackView = {
+  private lazy var movieDetailsStackView: UIStackView = {
     let view = UIStackView(arrangedSubviews: [titleLabel,
                                               ratingStackView,
                                               releaseDateLabel])
@@ -49,15 +49,16 @@ final class NowPlayingTableCellView: UITableViewCell {
     view.axis = .vertical
     return view
   }()
-  let movieIcon: UIImageView = {
+  let movieBackdropImage: UIImageView = {
     let view = UIImageView()
     view.layer.masksToBounds = true
     view.layer.cornerRadius = 32
+    view.backgroundColor = .gray.withAlphaComponent(0.3)
     view.translatesAutoresizingMaskIntoConstraints = false
     return view
   }()
-  lazy var mainStackView: UIStackView = {
-    let view = UIStackView(arrangedSubviews: [movieIcon,
+  private lazy var mainStackView: UIStackView = {
+    let view = UIStackView(arrangedSubviews: [movieBackdropImage,
                                               movieDetailsStackView])
     view.spacing = 8
     view.axis = .horizontal
@@ -88,8 +89,8 @@ final class NowPlayingTableCellView: UITableViewCell {
   private func installConstraints() {
     mainStackView.anchor(to: contentView, yPadding: .medium)
     
-    movieIcon.heightAnchor.constraint(equalToConstant: 64).isActive = true
-    movieIcon.widthAnchor.constraint(equalToConstant: 64).isActive = true
+    movieBackdropImage.heightAnchor.constraint(equalToConstant: 64).isActive = true
+    movieBackdropImage.widthAnchor.constraint(equalToConstant: 64).isActive = true
     
     movieRatingIcon.widthAnchor.constraint(equalToConstant: 24).isActive = true
   }

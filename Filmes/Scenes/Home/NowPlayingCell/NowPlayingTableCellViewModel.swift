@@ -18,6 +18,6 @@ struct NowPlayingTableCellViewModel {
     cell.titleLabel.text = movieName
     cell.movieRatingLabel.text = movieRating
     cell.releaseDateLabel.text = releaseDate
-    cell.movieIcon.downloaded(from: moviePosterUrl, contentMode: .scaleToFill)
+    cell.movieBackdropImage.downloaded(from: moviePosterUrl, contentMode: .scaleToFill)
   }
 }
