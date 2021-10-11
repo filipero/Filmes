@@ -1,4 +1,4 @@
-# Imoovies
+# Imoovie
 
 * [Instalacao](#instalacao)
 * [Sobre o projeto](#sobre-o-projeto)
