@@ -1,4 +1,4 @@
-# Imoovie
+# iMoovie
 
 * [Instalacao](#instalacao)
 * [Sobre o projeto](#sobre-o-projeto)
@@ -16,10 +16,7 @@ Este projeto foi construído utilizando a arquitetura **MVVM**, composta por Mod
 A api utilizada é a [The Movie Database API](https://developers.themoviedb.org/3).
 
 ## UI/Design
-Paródia do iFood.
-
-## Automaçao
-O projeto não conta com automação.
+O design do aplicativo foi baseado no atual Design do iFood para iOS.
 
 ## O Desafio
 Criar um aplicativo de listagem de filmes através do consumo de uma API.
@@ -30,7 +27,7 @@ Criar um aplicativo de listagem de filmes através do consumo de uma API.
     - Alguns dos requests para a tela Início, sendo eles:
         - Request de Filmes Populares
         - Request de Filmes Em Cartaz
-        - Request de Genêros
+        - Request de Gêneros
     - Layout da TabBar com navegação para as 4 telas:
         - Início
         - Busca
@@ -38,7 +35,7 @@ Criar um aplicativo de listagem de filmes através do consumo de uma API.
         - Perfil
     - Layout Listagem de Filmes em Cartaz
     - Layout Listagem de Filmes Populares
-    - Layout Listagem de Genêros
+    - Layout Listagem de Gêneros
     - Navegação para tela de Detalhes do Filme selecionado
     - Testes Unitários para a tela Início
 
@@ -48,8 +45,8 @@ Criar um aplicativo de listagem de filmes através do consumo de uma API.
     - Layout Tela Assistidos
     - Layout Tela Perfil
     - Layout Tela Listagem De Filmes Por Genêro
-    - Request Listagem de Filmes por Genêro
-    - Request de Busca de Filme por Nome/Genero
+    - Request Listagem de Filmes por Gênero
+    - Request de Busca de Filme por Nome/Gêneros
     - Armazenar Filmes marcados como assistidos localmente.
     
     
