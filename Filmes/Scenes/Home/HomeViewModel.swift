@@ -78,11 +78,19 @@ extension HomeViewModel: HomeViewModelProtocol {
     service.requestNowPlayingMovies(atPage: 1) { result in
       let baseUrl = session.session.imageSecureBaseUrl
       let nowPlayingMovies: [NowPlayingTableCellViewModel] = result.results.map {
-        NowPlayingTableCellViewModel(movieId: $0.id,
+        let dateFormatterInput = DateFormatter()
+        dateFormatterInput.dateFormat = "yyyy-MM-dd"
+        let dateFormatterOutput = DateFormatter()
+        dateFormatterOutput.dateFormat = "dd/MM/yyyy"
+        var formattedDate: String = $0.releaseDate
+        if let date = dateFormatterInput.date(from: $0.releaseDate) {
+          formattedDate = dateFormatterOutput.string(from: date)
+        }
+        return NowPlayingTableCellViewModel(movieId: $0.id,
                                      movieName: $0.title,
                                      movieRating: "\($0.voteAverage)",
                                      moviePosterUrl: baseUrl + "w300" + $0.backdropPath,
-                                     releaseDate: $0.releaseDate)
+                                     releaseDate: formattedDate)
       }
       if !nowPlayingMovies.isEmpty {
         self.nowPlayingDataSource = .make(for: nowPlayingMovies)
