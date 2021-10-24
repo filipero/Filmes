@@ -59,9 +59,9 @@ extension HomeViewModel: HomeViewModelProtocol {
   }
   public func requestPopularMoviesList(atPage page: Int,
                                        session: SessionCore = SessionCore.shared) {
-    service.requestPopularMovies(atPage: page) { result in
+    service.requestPopularMovies(atPage: page) { movieList in
       let baseUrl = session.session.imageSecureBaseUrl
-      let popularMovies: [PopularMovieCollectionCellViewModel] = result.results.map {
+      let popularMovies: [PopularMovieCollectionCellViewModel] = movieList.map {
         PopularMovieCollectionCellViewModel(movieId: $0.id,
                                             title: $0.title,
                                             moviePosterUrl: baseUrl + "w300" + $0.backdropPath)
@@ -75,9 +75,9 @@ extension HomeViewModel: HomeViewModelProtocol {
   
   public func requestNowPlayingMovies(atPage page: Int,
                                       session: SessionCore = SessionCore.shared) {
-    service.requestNowPlayingMovies(atPage: 1) { result in
+    service.requestNowPlayingMovies(atPage: 1) { movieList in
       let baseUrl = session.session.imageSecureBaseUrl
-      let nowPlayingMovies: [NowPlayingTableCellViewModel] = result.results.map {
+      let nowPlayingMovies: [NowPlayingTableCellViewModel] = movieList.map {
         NowPlayingTableCellViewModel(movieId: $0.id,
                                      movieName: $0.title,
                                      movieRating: "\($0.voteAverage)",
@@ -93,7 +93,7 @@ extension HomeViewModel: HomeViewModelProtocol {
   
   public func requestGenres() {
     service.requestMovieGenres {
-      let genreList: [GenreCollectionCellViewModel] = $0.genres.map {
+      let genreList: [GenreCollectionCellViewModel] = $0.map {
         GenreCollectionCellViewModel(id: $0.id,
                                      name: $0.name)
       }
