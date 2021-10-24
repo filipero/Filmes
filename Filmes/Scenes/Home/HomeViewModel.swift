@@ -63,7 +63,7 @@ extension HomeViewModel: HomeViewModelProtocol {
       let baseUrl = session.session.imageSecureBaseUrl
       let popularMovies: [PopularMovieCollectionCellViewModel] = result.results.map {
         PopularMovieCollectionCellViewModel(movieId: $0.id,
-                                            title: $0.originalTitle,
+                                            title: $0.title,
                                             moviePosterUrl: baseUrl + "w300" + $0.backdropPath)
       }
       if !popularMovies.isEmpty {
