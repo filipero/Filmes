@@ -20,6 +20,7 @@
 		DB2851A52711295100EE6A8C /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2851A42711295100EE6A8C /* CollectionViewDataSource.swift */; };
 		DB2851A72711582A00EE6A8C /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2851A62711582A00EE6A8C /* Bindable.swift */; };
 		DB2851A927115D7700EE6A8C /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2851A827115D7700EE6A8C /* Loadable.swift */; };
+		DB35720B2724F3FF0035B866 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB35720A2724F3FF0035B866 /* String+Extensions.swift */; };
 		DB5ECF3B2712BD9100ABB9F7 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECF3A2712BD9100ABB9F7 /* HomeViewModelTests.swift */; };
 		DB5ECF3D2712BDA000ABB9F7 /* HomeNavigationDelegateSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECF3C2712BDA000ABB9F7 /* HomeNavigationDelegateSpy.swift */; };
 		DB5ECF3F2712BF0800ABB9F7 /* HomeWorkerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECF3E2712BF0800ABB9F7 /* HomeWorkerMock.swift */; };
@@ -94,6 +95,7 @@
 		DB2851A42711295100EE6A8C /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		DB2851A62711582A00EE6A8C /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		DB2851A827115D7700EE6A8C /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
+		DB35720A2724F3FF0035B866 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		DB5ECF3A2712BD9100ABB9F7 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		DB5ECF3C2712BDA000ABB9F7 /* HomeNavigationDelegateSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationDelegateSpy.swift; sourceTree = "<group>"; };
 		DB5ECF3E2712BF0800ABB9F7 /* HomeWorkerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWorkerMock.swift; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 				DB6E30A22712858D00F72F66 /* CGFloat+Extensions.swift */,
 				DBF9EAB52712243F00A9C1D9 /* ImageView+Extensions.swift */,
 				DB6E30A4271285DA00F72F66 /* UIColor+Extensions.swift */,
+				DB35720A2724F3FF0035B866 /* String+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				DB77948127129C1100B5C6FA /* DetailsView.swift in Sources */,
 				DB77947F27129C1100B5C6FA /* DetailsModels.swift in Sources */,
 				DB77948027129C1100B5C6FA /* DetailsViewController.swift in Sources */,
+				DB35720B2724F3FF0035B866 /* String+Extensions.swift in Sources */,
 				DB6BABFD270FAF6E00AE0F3D /* HomeViewController.swift in Sources */,
 				DB6BAC08270FBE5000AE0F3D /* MainRouter.swift in Sources */,
 				DB2851A52711295100EE6A8C /* CollectionViewDataSource.swift in Sources */,
