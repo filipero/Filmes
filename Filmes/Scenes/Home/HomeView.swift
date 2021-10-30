@@ -19,6 +19,7 @@ final class HomeView: BaseView {
     layout.minimumInteritemSpacing = 32
     layout.itemSize = CGSize(width: 128, height: 88)
     let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    view.backgroundColor = .systemBackground
     view.register(PopularMovieCollectionCellView.self,
                   forCellWithReuseIdentifier: PopularMovieCollectionCellView.identifier)
     view.showsHorizontalScrollIndicator = false
@@ -39,6 +40,7 @@ final class HomeView: BaseView {
   let nowPlayingTableView: UITableView = {
     let view = UITableView()
     view.separatorStyle = .none
+    view.backgroundColor = .systemBackground
     view.register(NowPlayingTableCellView.self,
                   forCellReuseIdentifier: NowPlayingTableCellView.identifier)
     view.translatesAutoresizingMaskIntoConstraints = false
@@ -50,6 +52,7 @@ final class HomeView: BaseView {
     layout.minimumInteritemSpacing = 32
     layout.itemSize = CGSize(width: 128, height: 88)
     let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    view.backgroundColor = .systemBackground
     view.register(GenreCollectionCellView.self,
                   forCellWithReuseIdentifier: GenreCollectionCellView.identifier)
     view.showsHorizontalScrollIndicator = false
@@ -60,7 +63,7 @@ final class HomeView: BaseView {
   //MARK: - Initialize
 
   override func initialize() {
-    backgroundColor = .white
+    backgroundColor = .systemBackground
     addSubview(genreCollectionView)
     addSubview(popularMoviesCollectionView)
     addSubview(nowPlayingBackground)
