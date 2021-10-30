@@ -47,6 +47,7 @@ class NowPlayingTableCellViewModel {
     } else {
       cell.watchedButton.setImage(UIImage(systemName: "eye"), for: .normal)
     }
+    cell.watchedButton.removeTarget(nil, action: nil, for: .allEvents)
     cell.watchedButton.addTarget(self,
                                  action: #selector(didTapWatchedButton),
                                  for: .touchUpInside)
@@ -56,6 +57,5 @@ class NowPlayingTableCellViewModel {
 extension NowPlayingTableCellViewModel {
   @objc func didTapWatchedButton() {
     self.delegate?.watchedButtonTapped(movieId: self.movieId)
-    print("Movie name: \"\(movieName)\"")
   }
 }

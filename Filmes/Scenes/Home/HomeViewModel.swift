@@ -125,7 +125,6 @@ extension HomeViewModel: WatchedButtonDelegate {
     }
     self.nowPlayingDataSource = .make(for: self.nowPlayingModels)
     self.nowPlayingState.update(with: ())
-    print("Movie tapped: \(movieId)")
   }
 }
 
