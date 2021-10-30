@@ -106,5 +106,6 @@ final class NowPlayingTableCellView: UITableViewCell {
     watchedButton.anchor(topAnchor: contentView.topAnchor, .medium,
                        trailingAnchor: contentView.trailingAnchor, .medium)
     watchedButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
+    watchedButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
   }
 }
