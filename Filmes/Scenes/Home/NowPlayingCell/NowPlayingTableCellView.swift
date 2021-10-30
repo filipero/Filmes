@@ -65,7 +65,12 @@ final class NowPlayingTableCellView: UITableViewCell {
     view.translatesAutoresizingMaskIntoConstraints = false
     return view
   }()
-  
+  let watchedButton: UIButton = {
+    let view = UIButton()
+    view.tintColor = .red
+    view.translatesAutoresizingMaskIntoConstraints = false
+    return view
+  }()
   
   //MARK: - Initialize
   
@@ -82,16 +87,24 @@ final class NowPlayingTableCellView: UITableViewCell {
   private func setupComponents() {
     selectionStyle = .none
     contentView.addSubview(mainStackView)
+    contentView.addSubview(watchedButton)
     
     installConstraints()
   }
   
   private func installConstraints() {
-    mainStackView.anchor(to: contentView, yPadding: .medium)
+    mainStackView.anchor(topAnchor: contentView.topAnchor, .medium,
+                         leadingAnchor: contentView.leadingAnchor, .medium,
+                         trailingAnchor: watchedButton.leadingAnchor, .medium,
+                         bottomAnchor: contentView.bottomAnchor, .medium)
     
     movieBackdropImage.heightAnchor.constraint(equalToConstant: 64).isActive = true
     movieBackdropImage.widthAnchor.constraint(equalToConstant: 64).isActive = true
     
     movieRatingIcon.widthAnchor.constraint(equalToConstant: 24).isActive = true
+    
+    watchedButton.anchor(topAnchor: contentView.topAnchor, .medium,
+                       trailingAnchor: contentView.trailingAnchor, .medium)
+    watchedButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
   }
 }

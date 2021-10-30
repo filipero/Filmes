@@ -33,6 +33,7 @@ class HomeViewModel {
   
   var nowPlayingDataSource: TableViewDataSource<NowPlayingTableCellViewModel> = .make(for: [])
   var nowPlayingState: Bindable<Void> = Bindable()
+  var nowPlayingModels: [NowPlayingTableCellViewModel] = [NowPlayingTableCellViewModel]()
   
   var genreDataSource: CollectionViewDataSource<GenreCollectionCellViewModel> = .make(for: [])
   var genreState: Bindable<Void> = Bindable()
@@ -82,10 +83,12 @@ extension HomeViewModel: HomeViewModelProtocol {
                                      movieName: $0.title,
                                      movieRating: "\($0.voteAverage)",
                                      moviePosterUrl: baseUrl + "w300" + $0.backdropPath,
-                                     releaseDate: $0.releaseDate.inDDMMYYYY)
+                                     releaseDate: $0.releaseDate.inDDMMYYYY,
+                                     delegate: self)
       }
       if !nowPlayingMovies.isEmpty {
-        self.nowPlayingDataSource = .make(for: nowPlayingMovies)
+        self.nowPlayingModels.append(contentsOf: nowPlayingMovies)
+        self.nowPlayingDataSource = .make(for: self.nowPlayingModels)
         self.nowPlayingState.update(with: ())
       }
     }
@@ -110,6 +113,19 @@ extension HomeViewModel: HomeViewModelProtocol {
   
   public func goToMovieList(withGenre genre: HomeModels.Genre) {
     navigationDelegate?.goToMovieList(withGenre: genre)
+  }
+}
+
+extension HomeViewModel: WatchedButtonDelegate {
+  func watchedButtonTapped(movieId: Int) {
+    if let index = nowPlayingModels.firstIndex(where: {
+      $0.movieId == movieId
+    }) {
+      nowPlayingModels[index].watched = !nowPlayingModels[index].watched
+    }
+    self.nowPlayingDataSource = .make(for: self.nowPlayingModels)
+    self.nowPlayingState.update(with: ())
+    print("Movie tapped: \(movieId)")
   }
 }
 
